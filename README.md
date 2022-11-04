@@ -1,2 +1,2 @@
 # ohtu-palautus
-Ohjelmistotuotanto palautusrepositorio
+https://github.com/katajak/ohtuvarasto
