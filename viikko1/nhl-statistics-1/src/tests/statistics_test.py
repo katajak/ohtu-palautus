@@ -1,5 +1,5 @@
 import unittest
-from statistics import Statistics
+from statistics import Statistics, SortBy
 from player import Player
 
 class PlayerReaderStub:
@@ -38,8 +38,8 @@ class TestStatistics(unittest.TestCase):
     def test_invalid_team(self):
         self.assertEqual(self.statistics.team("AAA"), [])
 
-    def test_top(self):
-        top_3 = self.statistics.top(3)
+    def test_top_points(self):
+        top_3 = self.statistics.top(3, SortBy.POINTS)
         i = 1
         for player in top_3:
             if i == 1:
@@ -48,4 +48,28 @@ class TestStatistics(unittest.TestCase):
                 self.assertEqual(str(player), "Lemieux PIT 45 + 54 = 99")
             elif i == 3:
                 self.assertEqual(str(player), "Yzerman DET 42 + 56 = 98")
+            i += 1
+    
+    def test_top_goals(self):
+        top_3 = self.statistics.top(3, SortBy.GOALS)
+        i = 1
+        for player in top_3:
+            if i == 1:
+                self.assertEqual(str(player), "Lemieux PIT 45 + 54 = 99")
+            elif i == 2:
+                self.assertEqual(str(player), "Yzerman DET 42 + 56 = 98")
+            elif i == 3:
+                self.assertEqual(str(player), "Kurri EDM 37 + 53 = 90")
+            i += 1
+
+    def test_assists(self):
+        top_3 = self.statistics.top(3, SortBy.ASSISTS)
+        i = 1
+        for player in top_3:
+            if i == 1:
+                self.assertEqual(str(player), "Gretzky EDM 35 + 89 = 124")
+            elif i == 2:
+                self.assertEqual(str(player), "Yzerman DET 42 + 56 = 98")
+            elif i == 3:
+                self.assertEqual(str(player), "Lemieux PIT 45 + 54 = 99")
             i += 1
