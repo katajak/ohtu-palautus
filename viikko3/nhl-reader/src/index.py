@@ -1,6 +1,9 @@
 import requests
 from player import Player
 
+def sort_by_points(player):
+    return player.points
+
 def main():
     url = "https://studies.cs.helsinki.fi/nhlstats/2021-22/players"
     response = requests.get(url).json()
@@ -20,6 +23,8 @@ def main():
             )
 
             players.append(player)
+
+    players.sort(reverse=True, key=sort_by_points)
 
     print("Players from FIN:\n")
 
