@@ -14,17 +14,6 @@ class Sovelluslogiikka:
     def aseta_arvo(self, arvo):
         self.tulos = arvo
 
-class Komento():
-    def __init__(self, sovelluslogiikka, syote):
-        self.sovelluslogiikka = sovelluslogiikka
-        self.syote = syote
-
-    def suorita(self):
-        return 0
-
-    def kumoa(self):
-        pass
-
 class Summa():
     def __init__(self, sovelluslogiikka, syote):
         self.sovelluslogiikka = sovelluslogiikka
